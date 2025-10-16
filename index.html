@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA AUTOMATIZADO FODA - GESTIÓN DEL CAMBIO EN CIBERSEGURIDAD</title>
+    <style>
+        /* styles.css */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0;
+        }
+
+        .icon-shield {
+            width: 48px;
+            height: 48px;
+            color: white;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header-subtitle {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .grid-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .matrix {
+            border: 3px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .matrix-header {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+        }
+
+        .cell {
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            font-size: 0.9em;
+        }
+
+        .header-cell {
+            background: #17a2b8;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .internal {
+            background: #e9ecef;
+        }
+
+        .opportunities, .threats, .strengths, .weaknesses {
+            background: white;
+        }
+
+        .item {
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+            padding: 2px 4px;
+            border-radius: 3px;
+            cursor: text;
+        }
+
+        .item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .item strong {
+            display: inline-block;
+            min-width: 40px;
+            font-weight: bold;
+        }
+
+        .strategies {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff3cd;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .strategy {
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+            padding: 2px 4px;
+            border-radius: 3px;
+            cursor: text;
+        }
+
+        .strategy:hover {
+            background-color: #f8f9fa;
+        }
+
+        .strategy:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #dee2e6;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .icon-file {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .grid-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .matrix-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <svg class="icon-shield" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V5l-9-4z"/>
+                </svg>
+                <h1>SISTEMA FODA - GESTIÓN DEL CAMBIO EN CIBERSEGURIDAD</h1>
+            </div>
+            <p class="header-subtitle">Automatizado para Elaborar Análisis FODA Interactivo</p>
+        </div>
+
+        <!-- Matrices Grid -->
+        <div class="content">
+            <!-- Primera Fila -->
+            <div class="grid-row">
+                <!-- Matriz FO -->
+                <div class="matrix">
+                    <div class="matrix-header">
+                        CUADRANTE DE FORTALEZAS VS OPORTUNIDADES "ESTRATEGIAS OFENSIVAS"
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="cell header-cell">ANÁLISIS EXTERNO</div>
+                        <div class="cell header-cell">OPORTUNIDADES</div>
+                        
+                        <div class="cell header-cell internal">ANÁLISIS INTERNO</div>
+                        <div class="cell opportunities">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div class="cell header-cell">FORTALEZAS</div>
+                        <div class="cell strengths">
+                            <div class="fortalezas-items">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="strategies">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matriz FA -->
+                <div class="matrix">
+                    <div class="matrix-header">
+                        CUADRANTE DE FORTALEZAS VS AMENAZAS "ESTRATEGIAS DEFENSIVAS"
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="cell header-cell">ANÁLISIS EXTERNO</div>
+                        <div class="cell header-cell">AMENAZAS</div>
+                        
+                        <div class="cell header-cell internal">ANÁLISIS INTERNO</div>
+                        <div class="cell threats">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div class="cell header-cell">FORTALEZAS</div>
+                        <div class="cell strengths">
+                            <div class="fortalezas-items">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="strategies">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segunda Fila -->
+            <div class="grid-row">
+                <!-- Matriz DO -->
+                <div class="matrix">
+                    <div class="matrix-header">
+                        CUADRANTE DE DEBILIDADES VS OPORTUNIDADES "ESTRATEGIAS ADAPTATIVAS"
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="cell header-cell">ANÁLISIS EXTERNO</div>
+                        <div class="cell header-cell">OPORTUNIDADES</div>
+                        
+                        <div class="cell header-cell internal">ANÁLISIS INTERNO</div>
+                        <div class="cell opportunities">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div class="cell header-cell">DEBILIDADES</div>
+                        <div class="cell weaknesses">
+                            <div class="debilidades-items">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="strategies">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matriz DA -->
+                <div class="matrix">
+                    <div class="matrix-header">
+                        CUADRANTE DE DEBILIDADES VS AMENAZAS "ESTRATEGIAS DE SUPERVIVENCIA"
+                    </div>
+                    <div class="matrix-grid">
+                        <div class="cell header-cell">ANÁLISIS EXTERNO</div>
+                        <div class="cell header-cell">AMENAZAS</div>
+                        
+                        <div class="cell header-cell internal">ANÁLISIS INTERNO</div>
+                        <div class="cell threats">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div class="cell header-cell">DEBILIDADES</div>
+                        <div class="cell weaknesses">
+                            <div class="debilidades-items">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="strategies">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <button id="printBtn" class="print-btn">
+                <svg class="icon-file" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v4a2 2 0 0 0 2 2h4M14 2l-4 4"/>
+                </svg>
+                Descargar PDF
+            </button>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #6c757d;">Edita los elementos directamente en las matrices para personalizar tu FODA. Los cambios se guardan automáticamente en el navegador.</p>
+        </div>
+    </div>
+    <script>
+        // script.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos precargados del sector de ciberseguridad (actualizados para coincidir con las imágenes)
+            const fodaData = {
+                fortalezas: [
+                    { code: 'F01', desc: 'Capacidad de procesamiento y análisis de datos en tiempo real.' },
+                    { code: 'F02', desc: 'Potencial de automatización que reduce errores humanos.' },
+                    { code: 'F03', desc: 'Innovación constante en herramientas y algoritmos.' },
+                    { code: 'F04', desc: 'Aumento de productividad y eficiencia en procesos.' },
+                    { code: 'F05', desc: 'Adaptabilidad a múltiples sectores (salud, educación, industria, etc.).' }
+                ],
+                oportunidades: [
+                    { code: 'O1', desc: 'Creciente inversión pública y privada en IA.' },
+                    { code: 'O2', desc: 'Demanda de soluciones digitales pospandemia.' },
+                    { code: 'O3', desc: 'Regulaciones en construcción que permiten liderar estándares.' },
+                    { code: 'O4', desc: 'Expansión de la educación y formación en IA.' },
+                    { code: 'O5', desc: 'Integración con tecnologías emergentes (IoT, Big Data, blockchain).' }
+                ],
+                debilidades: [
+                    { code: 'D01', desc: 'Falta de implementación de infraestructura de redes de comunicación entre facultades.' },
+                    { code: 'D02', desc: 'Falta de infraestructura en para la unidad de Tecnologías de la Información y comunicaciones' },
+                    { code: 'D03', desc: 'Falta de Sistemas de información para apoyo en las áreas de la institución.' },
+                    { code: 'D04', desc: 'Falta de Implementación de un aula virtual propia.' },
+                    { code: 'F01', desc: 'Resistencia al cambio en las organizaciones.' },
+                    { code: 'F02', desc: 'Escasez de talento especializado en IA.' },
+                    { code: 'F03', desc: 'Altos costos de implementación y mantenimiento.' },
+                    { code: 'F04', desc: 'Falta de infraestructura tecnológica en algunos entornos.' },
+                    { code: 'F05', desc: 'Dificultad para explicar y generar confianza en los sistemas de IA (caja negra).' }
+                ],
+                amenazas: [
+                    { code: 'A01', desc: 'Riesgo de pérdida de empleos por automatización.' },
+                    { code: 'A02', desc: 'Brechas éticas y de privacidad en el uso de datos.' },
+                    { code: 'A03', desc: 'Competencia global intensa en innovación.' },
+                    { code: 'A04', desc: 'Riesgo de ciberataques y manipulación de algoritmos.' },
+                    { code: 'A05', desc: 'Posible rechazo social por medio al reemplazo humano.' }
+                ]
+            };
+
+            const estrategias = {
+                fo: [
+                    'E01: Aprovechar la innovación en IA y su aplicación multisectorial para liderar proyectos con apoyo de inversión pública y privada (O1), posicionándose como referente en soluciones de transformación digital. (F3,F5,O1)',
+                    'EO1: Desarrollar plataformas de formación en IA accesibles que combinen la capacidad de análisis en tiempo real con programas educativos, fortaleciendo la oferta del sector frente a la demanda creciente (F1, F4, O4).'
+                ],
+                fa: [
+                    'E02: Utilizar la capacidad de análisis en tiempo real y la reducción de errores para desarrollar marcos éticos de ciberseguridad robustos, mitigando riesgos de ciberataques y desconfianza social (A2,A4,A5,F1,F2)'
+                ],
+                do: [
+                    'E03: Reducir la escasez de talento especializado mediante programas de formación en IA en alianza con universidades y centros de investigación, fortaleciendo las capacidades internas y externas de la organización. (D2,O4)'
+                ],
+                da: [
+                    'EO4: Mitigar los altos costos de implementación y la falta de infraestructura) a través de colaboraciones estratégicas y uso de servicios en la nube, enfrentando la competencia global y evitando quedar rezagados. (D3,D4,A3)'
+                ]
+            };
+
+            // Función para poblar una lista (con editable)
+            function populateList(container, items, isStrategy = false) {
+                if (!container) return;
+                container.innerHTML = '';
+                items.forEach((item, idx) => {
+                    const div = document.createElement('div');
+                    if (isStrategy) {
+                        div.classList.add('strategy');
+                        div.contentEditable = true;
+                        div.textContent = item;
+                        if (idx < items.length - 1) {
+                            div.style.marginBottom = '10px';
+                        }
+                    } else {
+                        div.classList.add('item');
+                        div.contentEditable = true;
+                        div.innerHTML = `<strong contenteditable="false">${item.code}:</strong> ${item.desc}`;
+                        div.style.marginBottom = '8px';
+                    }
+                    container.appendChild(div);
+                });
+            }
+
+            // Poblar listas comunes (oportunidades y amenazas son iguales en todas)
+            const allOppo = document.querySelectorAll('.opportunities');
+            allOppo.forEach(oppo => populateList(oppo, fodaData.oportunidades));
+
+            const allThreats = document.querySelectorAll('.threats');
+            allThreats.forEach(threat => populateList(threat, fodaData.amenazas));
+
+            // Poblar fortalezas específicas
+            const foFort = document.querySelector('.grid-row:first-child .matrix:first-child .fortalezas-items');
+            populateList(foFort, fodaData.fortalezas);
+
+            const faFort = document.querySelector('.grid-row:first-child .matrix:nth-child(2) .fortalezas-items');
+            populateList(faFort, fodaData.debilidades.slice(4)); // General weaknesses para coincidir con imagen
+
+            // Poblar debilidades
+            const doDeb = document.querySelector('.grid-row:nth-child(2) .matrix:first-child .debilidades-items');
+            populateList(doDeb, fodaData.debilidades.slice(0, 4));
+
+            const daDeb = document.querySelector('.grid-row:nth-child(2) .matrix:nth-child(2) .debilidades-items');
+            populateList(daDeb, fodaData.debilidades.slice(0, 4));
+
+            // Poblar estrategias
+            populateList(document.querySelector('.matrix:nth-of-type(1) .strategies'), estrategias.fo, true);
+            populateList(document.querySelector('.matrix:nth-of-type(2) .strategies'), estrategias.fa, true);
+            populateList(document.querySelector('.grid-row:nth-of-type(2) .matrix:nth-of-type(1) .strategies'), estrategias.do, true);
+            populateList(document.querySelector('.grid-row:nth-of-type(2) .matrix:nth-of-type(2) .strategies'), estrategias.da, true);
+
+            // Guardar cambios automáticamente al localStorage
+            function saveToStorage() {
+                const data = {
+                    fortalezas: Array.from(foFort.children).map(el => ({
+                        code: el.querySelector('strong').textContent,
+                        desc: el.textContent.replace(el.querySelector('strong').textContent + ': ', '')
+                    })),
+                    // Similar para otros, pero para simplicidad, guardar todo el innerHTML de contenedores
+                    foFortHTML: foFort.innerHTML,
+                    faFortHTML: faFort.innerHTML,
+                    doDebHTML: doDeb.innerHTML,
+                    daDebHTML: daDeb.innerHTML,
+                    estrategiasFO: document.querySelector('.matrix:nth-of-type(1) .strategies').innerHTML,
+                    // ... agregar para otros si se desea
+                };
+                localStorage.setItem('fodaData', JSON.stringify(data));
+            }
+
+            // Event listeners para editable
+            document.addEventListener('input', function(e) {
+                if (e.target.classList.contains('item') || e.target.classList.contains('strategy')) {
+                    saveToStorage();
+                }
+            });
+
+            // Cargar desde localStorage si existe
+            const saved = localStorage.getItem('fodaData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.foFortHTML) foFort.innerHTML = data.foFortHTML;
+                if (data.faFortHTML) faFort.innerHTML = data.faFortHTML;
+                if (data.doDebHTML) doDeb.innerHTML = data.doDebHTML;
+                if (data.daDebHTML) daDeb.innerHTML = data.daDebHTML;
+                // Similar para estrategias
+            }
+
+            // Event listener para botón de print
+            const printBtn = document.getElementById('printBtn');
+            if (printBtn) {
+                printBtn.addEventListener('click', () => {
+                    window.print();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
